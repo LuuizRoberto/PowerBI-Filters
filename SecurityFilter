@@ -1,3 +1,5 @@
+-- First Command 
+
 OR(
 IF ('TypeUser'[Email] = USERNAME() && 'TypeUser'[Role] = "User",
 	SELECTCOLUMNS(
@@ -13,3 +15,26 @@ IF ('TypeUser'[Email] = USERNAME() && 'TypeUser'[Role] = "User",
 		),"Email",'TypeUser'[Email]
 	)
 )
+
+
+--Secund Command 
+
+OR(
+[Email] IN 
+	SELECTCOLUMNS(
+		FILTER('TypeUser','TypeUser'[Role] = "User" && 'TypeUser'[Email] = USERNAME()),"Email",'TypeUser'[Email]
+),
+[Email] IN 
+	SELECTCOLUMNS(
+		FILTER('TypeUser','TypeUser'[Channel] 
+			IN (
+				SELECTCOLUMNS(
+					FILTER('TypeUser','TypeUser'[Role] = "Master" && 'TypeUser'[Email] = USERNAME()),"Channel",'TypeUser'[Channel]
+				)
+			) 
+		),"Email",'TypeUser'[Email]
+	)
+)
+
+Instructions:  
+	- Create a auxiliary table with email and role of people for filter this report.  
