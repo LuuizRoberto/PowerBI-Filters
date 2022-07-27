@@ -1,0 +1,15 @@
+OR(
+IF ('TypeUser'[Email] = USERNAME() && 'TypeUser'[Role] = "User",
+	SELECTCOLUMNS(
+		FILTER('TypeUser','TypeUser'[Role] = "User" && 'TypeUser'[Email] = USERNAME()),"Email",'TypeUser'[Email]
+), IF( 'TypeUser'[Role] = "Master" && 'TypeUser'[Email] = USERNAME(),
+	SELECTCOLUMNS(
+		FILTER('TypeUser','TypeUser'[Channel] 
+			IN (
+				SELECTCOLUMNS(
+					FILTER('TypeUser','TypeUser'[Role] = "Master" && 'TypeUser'[Email] = USERNAME()),"Channel",'TypeUser'[Channel]
+				)
+			) 
+		),"Email",'TypeUser'[Email]
+	)
+)
