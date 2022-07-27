@@ -1,0 +1,1 @@
+#"Linhas Filtradas" = Table.SelectRows(#"Colunas Renomeadas", each (List.Contains(Table.Column(Office,"OfficeId"), [OfficeId])))
