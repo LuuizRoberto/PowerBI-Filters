@@ -1,0 +1,4 @@
+
+Activation = SUMMARIZE('Active Clients','Active Clients'[AvenueAccountId],"ActivationDate",CALCULATE(MIN('Active Clients'[ActivationDate]),'Active Clients'[ActivationDate]<>BLANK())) 
+
+datesmin = SUMMARIZE('Sec Orders','Sec Orders'[AvenueAccountId],"MinDate",CALCULATE(MIN('Sec Orders'[Date]),'Sec Orders'[Date]>DATE(2022,01,01)))
