@@ -1,0 +1,1 @@
+YearWeek = IF('Account Creation Date'[IsoWeek]<10,CONCATENATE(CONCATENATE("Y",RIGHT('Account Creation Date'[IsoYear],2)),CONCATENATE("-W0",'Account Creation Date'[IsoWeek])),CONCATENATE(CONCATENATE("Y",RIGHT('Account Creation Date'[IsoYear],2)),CONCATENATE("-W",'Account Creation Date'[IsoWeek])))
