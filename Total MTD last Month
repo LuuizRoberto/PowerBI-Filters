@@ -1,0 +1,2 @@
+Total Revenue Last Month MTD = CALCULATE([Revenue],DATESBETWEEN('Date'[Date],SELECTEDVALUE('Custody Dates'[FirstDatePreviousMonth]),
+SELECTEDVALUE('Custody Dates'[MaxDatePreviousMonth])))
