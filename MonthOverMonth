@@ -1,0 +1,5 @@
+Para casos que só deve pegar o ultimo dia do mes para calculo. 
+Total Clients MoM% = 
+VAR __PREV_MONTH = CALCULATE([Total Clients], ENDOFMONTH(DATEADD('Date'[Date], -1, MONTH)))
+RETURN
+    DIVIDE([Total Clients] - __PREV_MONTH, __PREV_MONTH)
