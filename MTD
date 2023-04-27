@@ -1,0 +1,10 @@
+-- Users = DISTINCTCOUNT(MAU[AvenueAccountId]) (Métrica padrão full time)
+
+-- MTD MAU = CALCULATE([Users],DATESMTD('Date'[Date])) + 0 (Métrica MTD do mês atual) 
+
+-- MAU Last Month = CALCULATE([Users], DATEADD('Date'[Date],-1,MONTH)) (Métrica do mês anterior) 
+
+-- MAU Last Month MTD = TOTALMTD([MAU Last Month], 'Date'[Date]) (MTD do mês anterior) 
+
+
+%MoM MTD MAU = ([MTD MAU]-[MAU Last Month MTD])/([MAU Last Month MTD]) -- Comparação Month over Month do  mesmo período do mês anterior com o período atual no mês. 
