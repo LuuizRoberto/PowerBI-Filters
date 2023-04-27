@@ -1,0 +1,16 @@
+NPSGetFeedBack 180D =
+VAR NPSLAST180D =
+CALCULATE([NPSGet from Answers],
+    DATESBETWEEN(NPS_Date[Date],
+    DATEADD(
+        LASTDATE(NPS_Date[Date]),-180,DAY),
+        LASTDATE(NPS_Date[Date])))
+    RETURN
+    
+IF(NPS_GetFeedBack_Response[NPSGet from Answers] <> BLANK(),
+    NPSLAST180D)
+
+
+Calculo de métrica dos últimos 180d
+
+- Nesse caso, calcula o NPS dos últimos 180D, utilizado como base uma data passada no eixo do gráfico ou na coluna de uma tabela. 
